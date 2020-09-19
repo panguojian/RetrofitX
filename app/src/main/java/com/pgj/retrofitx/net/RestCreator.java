@@ -25,7 +25,7 @@ public final class RestCreator {
     }
 
     private static final class RetrofitHolder{
-        private static final String BASE_URL="https://www.baidu.com";
+        private static final String BASE_URL="https://www.imooc.com/";
         private static final Retrofit RETROFIT_CLIENT=new Retrofit.Builder()
                 .baseUrl(BASE_URL).client(OkHttpHolder.OK_HTTP_CLIENT)
                 .addConverterFactory(ScalarsConverterFactory.create())

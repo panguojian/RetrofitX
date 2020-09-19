@@ -1,6 +1,5 @@
 package com.pgj.retrofitx;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -9,11 +8,16 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.pgj.retrofitx.net.RestClient;
-import com.pgj.retrofitx.net.RestCreator;
 import com.pgj.retrofitx.net.callback.IError;
 import com.pgj.retrofitx.net.callback.IFailure;
 import com.pgj.retrofitx.net.callback.IRequest;
 import com.pgj.retrofitx.net.callback.ISuccess;
+import com.pgj.retrofitx.ui.RestLoader;
+
+
+/**
+ * Created by pgj on 2020/9/18
+ **/
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,42 +27,40 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initLoadingDialog();
+
         findViewById(R.id.btn_request).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 RestClient.builder()
-                        .url("/")
+                        .url("")
                         .success(new ISuccess() {
                             @Override
                             public void onSuccess(String response) {
+                                //Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
                                 System.out.println(response);
-                                Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
                             }
                         })
                         .request(new IRequest() {
                             @Override
                             public void onRequestStart() {
-                                System.out.println("请求开始");
-                                progressDialog.show();
+                                RestLoader.showLoading(MainActivity.this);
                             }
 
                             @Override
                             public void onRequestEnd() {
-                                System.out.println("请求结束");
-                                progressDialog.dismiss();
+                                RestLoader.stopLoading();
                             }
                         })
                         .failure(new IFailure() {
                             @Override
                             public void onFailure(Throwable t) {
-                                System.out.println("失败："+t.getMessage());
+                                Toast.makeText(MainActivity.this,"请求失败："+t.getMessage().toString(),Toast.LENGTH_LONG).show();
                             }
                         })
                         .error(new IError() {
                             @Override
                             public void onError(int code, String msg) {
-                                System.out.println("错误");
+                                Toast.makeText(MainActivity.this,"请求错误:"+code+" "+msg,Toast.LENGTH_LONG).show();
                             }
                         })
                         .build()
@@ -69,9 +71,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initLoadingDialog(){
-        progressDialog=new ProgressDialog(this);
-        progressDialog.setMessage("加载中......");
-    }
 
 }

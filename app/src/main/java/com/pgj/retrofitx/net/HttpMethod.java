@@ -1,8 +1,8 @@
 package com.pgj.retrofitx.net;
 
 /**
- * Created by 傅令杰 on 2017/4/2
- */
+ * Created by pgj on 2020/9/18
+ **/
 
 enum HttpMethod {
     GET,
