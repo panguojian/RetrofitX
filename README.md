@@ -4,7 +4,7 @@
 该项目集成[AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView)框架，便于呈现网络加载的状态  
   
 ![image](https://github.com/81813780/AVLoadingIndicatorView/blob/master/screenshots/avi.gif)
-# 使用方法
+# 简单使用事例
     findViewById(R.id.btn_request).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
