@@ -5,6 +5,7 @@
   
 ![image](https://github.com/81813780/AVLoadingIndicatorView/blob/master/screenshots/avi.gif)
 # 简单使用事例
+    //省略部分代码
     findViewById(R.id.btn_request).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,3 +45,4 @@
                         .get();
             }
         });
+        //省略部分代码
