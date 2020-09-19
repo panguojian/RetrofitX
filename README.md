@@ -14,6 +14,7 @@
                         .success(new ISuccess() {
                             @Override
                             public void onSuccess(String response) {
+                                //TODO 请求成功回调到这里
                                 //Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
                                 System.out.println(response);
                             }
@@ -21,24 +22,26 @@
                         .request(new IRequest() {
                             @Override
                             public void onRequestStart() {
+                                //TODO 请求开始回调到这里
                                 RestLoader.showLoading(MainActivity.this);
                             }
 
                             @Override
                             public void onRequestEnd() {
+                                //TODO 请求结束回调到这里
                                 RestLoader.stopLoading();
                             }
                         })
                         .failure(new IFailure() {
                             @Override
                             public void onFailure(Throwable t) {
-                                Toast.makeText(MainActivity.this,"请求失败："+t.getMessage().toString(),Toast.LENGTH_LONG).show();
+                                //TODO 对请求失败做出响应
                             }
                         })
                         .error(new IError() {
                             @Override
                             public void onError(int code, String msg) {
-                                Toast.makeText(MainActivity.this,"请求错误:"+code+" "+msg,Toast.LENGTH_LONG).show();
+                                //TODO 对请求错误做出响应
                             }
                         })
                         .build()
