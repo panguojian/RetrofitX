@@ -1,4 +1,4 @@
-package com.pgj.retrofitx.ui;
+package com.pgj.retrofitx.component;
 
 import android.content.Context;
 

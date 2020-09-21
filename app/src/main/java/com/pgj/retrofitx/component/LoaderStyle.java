@@ -1,4 +1,4 @@
-package com.pgj.retrofitx.ui;
+package com.pgj.retrofitx.component;
 
 /**
  * Created by pgj on 2020/9/18
