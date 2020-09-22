@@ -8,7 +8,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatDialog;
 
 import com.pgj.retrofitx.R;
-import com.pgj.retrofitx.dimen.DimenUtil;
+import com.pgj.retrofitx.util.dimen.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;

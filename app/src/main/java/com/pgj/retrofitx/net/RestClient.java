@@ -5,6 +5,7 @@ import com.pgj.retrofitx.net.callback.IFailure;
 import com.pgj.retrofitx.net.callback.IRequest;
 import com.pgj.retrofitx.net.callback.ISuccess;
 import com.pgj.retrofitx.net.callback.RequestCallbacks;
+import com.pgj.retrofitx.net.download.DownloadHandler;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -24,8 +25,11 @@ public class RestClient {
     private final IError ERROR;
     private final IRequest REQUEST;
     private final RequestBody BODY;
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String NAME;
 
-    public RestClient(String url, Map<String, Object> params, ISuccess success, IFailure failure, IError error, IRequest rquest, RequestBody body) {
+    public RestClient(String url, Map<String, Object> params, ISuccess success, IFailure failure, IError error, IRequest rquest, RequestBody body,String downloadDir,String extension,String name) {
         this.URL = url;
         PARAMS.putAll(params);
         this.SUCCESS = success;
@@ -33,6 +37,9 @@ public class RestClient {
         this.ERROR = error;
         this.REQUEST = rquest;
         this.BODY = body;
+        this.DOWNLOAD_DIR=downloadDir;
+        this.EXTENSION=extension;
+        this.NAME=name;
     }
 
     public static RestClientBuilder builder(){
@@ -87,5 +94,9 @@ public class RestClient {
 
     public final void delete(){
         request(HttpMethod.DELETE);
+    }
+
+    public final void download(){
+        new DownloadHandler(URL,SUCCESS,FAILURE,ERROR,REQUEST,DOWNLOAD_DIR,EXTENSION,NAME).handleDownload();
     }
 }

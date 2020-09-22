@@ -15,14 +15,16 @@ import okhttp3.RequestBody;
  * Created by pgj on 2020/9/18
  **/
 public class RestClientBuilder {
-    private String mUrl;
+    private String mUrl=null;
     private static final Map<String,Object> PARAMS=RestCreator.getParams();
-    private ISuccess mSuccess;
-    private IFailure mFailure;
-    private IError mError;
-    private IRequest mRequest;
-    private RequestBody mBody;
-
+    private ISuccess mSuccess=null;
+    private IFailure mFailure=null;
+    private IError mError=null;
+    private IRequest mRequest=null;
+    private RequestBody mBody=null;
+    private String mDownloadDir =null;
+    private String mExtension=null;
+    private String name=null;
     RestClientBuilder(){
 
     }
@@ -67,8 +69,22 @@ public class RestClientBuilder {
         return this;
     }
 
+    public final RestClientBuilder dir(String dir){
+        this.mDownloadDir =dir;
+        return this;
+    }
+
+    public final RestClientBuilder extension(String extension){
+        this.mExtension=extension;
+        return this;
+    }
+
+    public final RestClientBuilder name(String name){
+        this.name=name;
+        return this;
+    }
     public final RestClient build(){
-        return new RestClient(mUrl,PARAMS,mSuccess,mFailure,mError,mRequest,mBody);
+        return new RestClient(mUrl,PARAMS,mSuccess,mFailure,mError,mRequest,mBody, mDownloadDir,mExtension,name);
     }
 
 }

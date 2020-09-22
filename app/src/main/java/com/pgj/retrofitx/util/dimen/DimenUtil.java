@@ -1,4 +1,4 @@
-package com.pgj.retrofitx.dimen;
+package com.pgj.retrofitx.util.dimen;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
