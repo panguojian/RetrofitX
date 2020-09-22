@@ -18,7 +18,7 @@ class DownloadActivity : AppCompatActivity() {
         initViews()
         downloadBtn?.setOnClickListener {
             RestClient.builder()
-                    .url("/pic/bing/")
+                    .url("/update/android/v1.4.29/app_v1.4.29_fly2cn_gw.apk")
                     .success {
                         val file=File(it)
                         println("下载成功：$it")
